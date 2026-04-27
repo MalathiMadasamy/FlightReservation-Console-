@@ -1,0 +1,164 @@
+=====================================================
+  FLIGHT RESERVATION SYSTEM - CONSOLE APP
+  HOW TO RUN - STEP BY STEP
+=====================================================
+
+FOLDER STRUCTURE:
+ConsoleApp/
+├── src/
+│   └── com/flightreservation/
+│       ├── Main.java
+│       ├── model/
+│       ├── service/
+│       ├── exception/
+│       └── util/
+├── pom.xml
+└── HOW_TO_RUN.txt   ← You are reading this
+
+=====================================================
+PREREQUISITES - INSTALL THESE FIRST
+=====================================================
+
+1. Install JDK 17:
+   → Go to: https://adoptium.net
+   → Download: Eclipse Temurin 17 (LTS)
+   → Install it (Next → Next → Finish)
+   → Restart your PC after install
+
+2. Check Java is installed:
+   Open CMD and type:
+   java -version
+   javac -version
+   (Both should show version 17.x.x)
+
+=====================================================
+METHOD 1 - RUN USING CMD (SIMPLEST WAY)
+=====================================================
+
+Step 1: Extract the ZIP
+   → Right click ConsoleApp.zip
+   → Extract All → Choose a folder (e.g., Desktop)
+
+Step 2: Open CMD in that folder
+   → Open the extracted ConsoleApp folder
+   → Click on the address bar at the top
+   → Type: cmd
+   → Press Enter
+   (CMD opens directly in that folder)
+
+Step 3: Create output folder
+   mkdir out
+
+Step 4: Compile all Java files
+   javac -d out -sourcepath src src\com\flightreservation\Main.java
+
+Step 5: Run the program
+   java -cp out com.flightreservation.Main
+
+Step 6: You will see the MENU - use numbers 1-9!
+
+=====================================================
+METHOD 2 - RUN USING MAVEN
+=====================================================
+
+Step 1: Install Maven
+   → Go to: https://maven.apache.org/download.cgi
+   → Download: apache-maven-3.x.x-bin.zip
+   → Extract to C:\Maven
+   → Add C:\Maven\bin to System PATH
+
+Step 2: Open CMD in the ConsoleApp folder
+
+Step 3: Compile
+   mvn clean compile
+
+Step 4: Run
+   mvn exec:java -Dexec.mainClass="com.flightreservation.Main"
+
+   OR build JAR and run:
+   mvn clean package
+   java -jar target\FlightConsoleApp.jar
+
+=====================================================
+METHOD 3 - RUN IN VS CODE
+=====================================================
+
+Step 1: Open VS Code
+Step 2: File → Open Folder → Select ConsoleApp folder
+Step 3: Install extension: "Extension Pack for Java" (Microsoft)
+Step 4: Wait for Java to index (bottom bar shows "Java ready")
+Step 5: Open Main.java
+Step 6: Click the ▶ RUN button that appears above main() method
+        OR press Ctrl+F5
+
+=====================================================
+METHOD 4 - RUN IN INTELLIJ IDEA (EASIEST IDE)
+=====================================================
+
+Step 1: Download IntelliJ IDEA Community (FREE)
+   → https://www.jetbrains.com/idea/download/
+   → Download Community Edition
+
+Step 2: Open IntelliJ
+   → File → Open → Select the ConsoleApp folder → OK
+
+Step 3: Set JDK
+   → File → Project Structure → SDK → Select Java 17
+   → Click OK
+
+Step 4: Open Main.java
+   → src → com → flightreservation → Main.java
+
+Step 5: Right-click → Run 'Main.main()'
+
+=====================================================
+MENU OPTIONS EXPLAINED
+=====================================================
+
+1 → Add New Flight    (Add a new flight to system)
+2 → Search Flights    (Search by source & destination)
+3 → View All Flights  (See all available flights)
+4 → Book Ticket       (Book a seat on a flight)
+5 → Cancel Booking    (Cancel using Booking ID)
+6 → View Booking History (See all bookings made)
+7 → View Booking by ID   (Find one specific booking)
+8 → Multithreading Demo  (See threads working)
+9 → Exit
+
+=====================================================
+SAMPLE TEST - TRY THIS AFTER RUNNING
+=====================================================
+
+1. Run the app
+2. Press 3 → View All Flights (5 sample flights load automatically)
+3. Press 4 → Book Ticket
+   Flight Number: AI101
+   Passenger Name: Aarav
+   Phone: 9876543210
+   Seats: 2
+4. Note the Booking ID shown (e.g., BK0001)
+5. Press 5 → Cancel Booking
+   Enter: BK0001
+6. Press 6 → View Booking History
+
+Data is saved in:
+   flights.txt  → in the same folder where you run the app
+   bookings.txt → in the same folder where you run the app
+
+=====================================================
+COMMON ERRORS AND FIXES
+=====================================================
+
+ERROR: 'javac' is not recognized
+FIX:   JDK not installed. Go to https://adoptium.net and install JDK 17
+
+ERROR: cannot find symbol
+FIX:   Make sure you are in the ConsoleApp folder when running javac
+
+ERROR: Could not find or load main class
+FIX:   Run: javac -d out -sourcepath src src\com\flightreservation\Main.java
+       Then: java -cp out com.flightreservation.Main
+
+ERROR: Java: Lightweight Mode (in VS Code)
+FIX:   Press Ctrl+Shift+P → type "Java: Clean Java Language Server Workspace"
+       Click it → Restart
